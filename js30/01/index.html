@@ -61,41 +61,22 @@
 
     function removeTransition (e) {
         if (e.propertyName !== 'transform') return;
-        console.log(e.propertyName);
         this.classList.remove('playing');
-    };
+    }
 
-
-    // Implement as arrow syntax, understand this
-    // removeTransition = e => {
-    //     if (e.propertyName !== 'transform') return;
-    //
-    //     console.log(this);
-    //     // console.log(e.propertyName);
-    //     // this.classList.remove('playing');
-    // };
-
-    document.addEventListener('keydown', function(e) {
-       const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
+    function playSound (e) {
+        const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
         const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
 
-       if (!audio) return;
+        if (!audio) return;
+        audio.currentTime = 0;
+        key.classList.add('playing');
+        const keys = document.querySelectorAll('.key');
+        keys.forEach( key => key.addEventListener('transitionend', removeTransition  ));
+        audio.play();
+    }
 
-       audio.currentTime = 0;
-
-       // console.log(key);
-
-
-       key.classList.add('playing');
-
-       const keys = document.querySelectorAll('.key');
-
-       // console.log(keys);
-
-       keys.forEach( key => key.addEventListener('transitionend', removeTransition  ));
-
-       audio.play();
-    });
+    document.addEventListener('keydown', playSound);
 </script>
 
 
