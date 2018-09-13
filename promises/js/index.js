@@ -1,7 +1,19 @@
 (function() {
   let pinkyPromise = () => {
-    console.log('promises');
+
+    return new Promise( (resolve, reject) => {
+      console.log('hello');
+      
+      // successful call to api
+      setTimeout(() => resolve("done!"), 1000);
+    });
+
   }
 
-  pinkyPromise();
+  let moePromise = pinkyPromise();
+
+  moePromise.then( () => {
+    console.log('then promise');
+  });
+
 })();
