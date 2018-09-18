@@ -43,17 +43,27 @@
     // console.log('Timeout from inner timeout')
     // });
 
+    // No return, does it work?
+    new Promise( (resolve, reject) => {
+      setTimeout( () => {
+        resolve('inner promise from first then, after 2 seconds')
+      }, 2000);
+    });
+    
     // Creates a new promise, that is returns a promise that serves as a proxy until the inner executor, created by
     // the Promise
+
+    // Must be returned to be passed to parameter of then
     return new Promise( (resolve, reject) => {
       setTimeout( () => {
         resolve('inner promise from first then, after 2 seconds')
       }, 2000);
     });
-
   }).then((result) => {
+
     console.log(`${result}`)
     console.log('second then')
+
   }).catch((error) => {
     console.log(error, ' was caught');
     return false;
