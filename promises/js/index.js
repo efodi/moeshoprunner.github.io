@@ -1,10 +1,15 @@
+'use strict';
+
 (function() {
+
+  // Functions
 
   // returns 1 or 0 with floored input of 2
   let randInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
+  // Create Initial Promise
   let pinkyPromise = () => {
 
     return new Promise( (resolve, reject) => {
@@ -22,50 +27,36 @@
     });
   }
 
+  // Create promise instance
   let moePromise = pinkyPromise();
 
-  // Can't really log Promise, it is a promise, and must be .then() to actually view
-  // its contents.
+  // Logging the promise will reveal following states
+  console.log(moePromise);
 
   // Contains
   // 1. Pending
   // 2. Fulfilled
   // 3. Rejected
-  console.log(moePromise);
 
-
+  // After promise, chain some then events to ensure order
   moePromise.then( (result) => {
-    
     console.log('first then');
-    
-    // Will run after subsquent then below
-    // return setTimeout(() => {
-    // console.log('Timeout from inner timeout')
-    // });
+    console.log(moePromise);
+    // Creates a new promise to be returned to the enclosing then() promise
 
-    // No return, does it work?
-    new Promise( (resolve, reject) => {
-      setTimeout( () => {
-        resolve('inner promise from first then, after 2 seconds')
-      }, 2000);
-    });
-    
-    // Creates a new promise, that is returns a promise that serves as a proxy until the inner executor, created by
-    // the Promise
-
-    // Must be returned to be passed to parameter of then
     return new Promise( (resolve, reject) => {
       setTimeout( () => {
         resolve('inner promise from first then, after 2 seconds')
-      }, 2000);
+      }, 10 * 1000);
     });
+
   }).then((result) => {
 
     console.log(`${result}`)
     console.log('second then')
 
   }).catch((error) => {
+    
     console.log(error, ' was caught');
-    return false;
   });
 })();
