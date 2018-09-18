@@ -8,3 +8,7 @@
 
 ## States and Fates
 - https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md
+
+## Resources
+1. https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1
+2. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

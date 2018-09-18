@@ -22,6 +22,7 @@
         setTimeout(() => resolve("done!"), 1000);
       } else {
         // on failure, invoke reject with parameters as return to .then() chain
+        console.log('ERROR');
         setTimeout(() => reject( Error("failed")), 1000) ;
       }
     });
@@ -39,7 +40,7 @@
   // 3. Rejected
 
   // After promise, chain some then events to ensure order
-  moePromise.then( (result) => {
+  moePromise.then((result) => {
     console.log('first then');
     console.log(moePromise);
     // Creates a new promise to be returned to the enclosing then() promise
@@ -50,7 +51,14 @@
       }, 10 * 1000);
     });
 
-  }).then((result) => {
+  }
+  
+  // onSuccess, onFailure can be passed into one .then() but we should use .then() and .catch()
+  // (result) => {
+  //   console.log('failure in then', result);
+  // }
+
+  ).then((result) => {
 
     console.log(`${result}`)
     console.log('second then')
