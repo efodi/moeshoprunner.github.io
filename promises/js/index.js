@@ -32,6 +32,7 @@
   let moePromise = pinkyPromise();
 
   // Logging the promise will reveal following states
+  console.log('Promise state pending! ----------------------------------------------');
   console.log(moePromise);
 
   // Contains
@@ -42,6 +43,7 @@
   // After promise, chain some then events to ensure order
   moePromise.then((result) => {
     console.log('first then');
+    console.log('Promise state fulfilled! ----------------------------------------------');
     console.log(moePromise);
     // Creates a new promise to be returned to the enclosing then() promise
 
@@ -64,7 +66,8 @@
     console.log('second then')
 
   }).catch((error) => {
-    
+    console.log('Promise state rejected! ----------------------------------------------');
+    console.log(moePromise);
     console.log(error, ' was caught');
   });
 })();
