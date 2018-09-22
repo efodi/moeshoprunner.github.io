@@ -7,7 +7,7 @@
   // returns 1 or 0 with floored input of 2
   let randInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+  };
 
   // Create Initial Promise
   let pinkyPromise = () => {
@@ -26,7 +26,7 @@
         setTimeout(() => reject( Error("failed")), 1000) ;
       }
     });
-  }
+  };
 
   // Create promise instance
   let moePromise = pinkyPromise();
