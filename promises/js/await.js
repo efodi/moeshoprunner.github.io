@@ -1,25 +1,37 @@
+// RAND INT
+
+// TODO: Extract
+let randInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+};
+
+
+// Create Promise
 const pinkyPromise = () => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // resolve('Moe is on Beertation!');
-        }, 500);
+        if(randInt(2) === 1) {
+            setTimeout(() => {
+                resolve('Moe is on Beertation!');
+            }, 500);
+        } else {
+            setTimeout(() => {
+                reject(Error('Request failed'));
+            }, 500);
+        }
     });
 };
 
-
+// Make Request and log
 const makeRequest = async() => {
-    // console.log(await pinkyPromise());
-    return "Success";
+    try {
+        const result = await pinkyPromise();
+        console.log(result);
+        // Pass to Promise
+        // // Implicitly returns a promise with a value of the return
+        return result;
+    } catch (e) {
+        console.log(e);
+    }
 };
 
-// Implicitly returns a promise with a value of the return
-// So would be similar to
-
-/*
-    return new Promise((resolve, reject) => {
-        resolve("Success");
-    });
-*/
-
-const result = makeRequest();
-console.log(result);
+makeRequest();
