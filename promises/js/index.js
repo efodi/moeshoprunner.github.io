@@ -53,16 +53,9 @@
       }, 10 * 1000);
     });
 
-  }
-  
-  // onSuccess, onFailure can be passed into one .then() but we should use .then() and .catch()
-  // (result) => {
-  //   console.log('failure in then', result);
-  // }
+  }).then((result) => {
 
-  ).then((result) => {
-
-    console.log(`${result}`)
+    console.log(`${result}`);
     console.log('second then')
 
   }).catch((error) => {

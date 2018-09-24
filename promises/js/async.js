@@ -25,10 +25,11 @@ const pinkyPromise = () => {
 const makeRequest = async() => {
     try {
         const result = await pinkyPromise();
-        console.log(result);
-        // Pass to Promise
-        // // Implicitly returns a promise with a value of the return
-        return result;
+
+        if (result) {
+            console.log(result);
+        }
+        // Implicitly returns a promise
     } catch (e) {
         console.log(e);
     }
