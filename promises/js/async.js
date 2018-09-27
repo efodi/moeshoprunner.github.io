@@ -25,11 +25,12 @@ const pinkyPromise = () => {
 const makeRequest = async() => {
     try {
         const result = await pinkyPromise();
-
+        // Implicitly returns a promise
+        // await will wait until the Promise resolve
+        // and we can write synchronous code below
         if (result) {
             console.log(result);
         }
-        // Implicitly returns a promise
     } catch (e) {
         console.log(e);
     }
