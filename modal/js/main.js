@@ -16,7 +16,7 @@
           console.log('test');
           iframe.contentWindow.focus();
           console.log(document.activeElement, 'is the currently active element');
-      }, 0);
+      }, 2000);
     });
 
     
