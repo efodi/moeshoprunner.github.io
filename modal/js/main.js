@@ -14,7 +14,7 @@
 
       setTimeout(function() {
           console.log('test');
-          iframe.contentWindow.focus();
+          document.getElementById('sr-modal').focus();
           console.log(document.activeElement, 'is the currently active element');
       }, 2000);
     });
