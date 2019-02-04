@@ -10,12 +10,16 @@
 
     $modalButton.addEventListener('click', function(event) {
       modalOpen = true;
-      $closeButton = document.querySelector('.modal__close')
+      $closeButton = document.querySelector('.modal__close');
+
       setTimeout(function() {
-        iframe.contentWindow.focus();
-      }, 2000);
-      
+          console.log('test');
+          iframe.contentWindow.focus();
+          console.log(document.activeElement, 'is the currently active element');
+      }, 0);
     });
+
+    
 
     document.addEventListener('focusin', function(event) {
       if(modalOpen && event.target === $modalButton) {
