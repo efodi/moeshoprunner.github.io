@@ -11,7 +11,10 @@
     $modalButton.addEventListener('click', function(event) {
       modalOpen = true;
       $closeButton = document.querySelector('.modal__close')
-      iframe.contentWindow.focus();
+      setTimeout(function() {
+        iframe.contentWindow.focus();
+      }, 2000);
+      
     });
 
     document.addEventListener('focusin', function(event) {
