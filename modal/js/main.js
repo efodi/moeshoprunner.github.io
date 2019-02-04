@@ -4,7 +4,7 @@
     MicroModal.init();
 
     var $modalButton = document.getElementById('show-modal');
-    var iframe = document.querySelector('.modal iframe');
+    var iframe = document.getElementById('sr-modal');
     var modalOpen = false;
     var $closeButton;
 
